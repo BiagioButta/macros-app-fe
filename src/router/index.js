@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import Login from '../views/Login.vue'
 import AddNourishment from '../views/AddNourishment.vue'
+import NourishmentList from '../views/NourishmentList.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -20,6 +21,11 @@ const router = createRouter({
       path: '/addNourishment',
       name: 'addNourishment',
       component: AddNourishment
+    },
+    {
+      path: '/nourishmentList',
+      name: 'nourishmentList',
+      component: NourishmentList
     },
   ]
 })
