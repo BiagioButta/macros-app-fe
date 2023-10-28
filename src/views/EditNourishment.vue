@@ -1,0 +1,3 @@
+<template>
+    Editare alimento
+</template>
