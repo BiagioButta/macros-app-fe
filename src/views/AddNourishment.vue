@@ -9,19 +9,19 @@
       <div class="row mb-3">
         <label for="inputName" class="col-sm-2 col-form-label">Nome alimento</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputName">
+          <input type="text" class="form-control" id="inputName" v-model="inputName">
         </div>
       </div>
       <div class="row mb-3">
         <label for="inputBrand" class="col-sm-2 col-form-label">Marchio</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputBrand">
+          <input type="text" class="form-control" id="inputBrand" v-model="inputBrand">
         </div>
       </div>
       <div class="row mb-3">
         <label for="inputDescription" class="col-sm-2 col-form-label">Descrizione</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputDescription">
+          <input type="text" class="form-control" id="inputDescription" v-model="inputDescription">
         </div>
       </div>
       <div class="row mb-3">
@@ -171,10 +171,10 @@ export default {
   methods: {
     addNourishment() {
       
-      const nourishment = {
-        inputName: this.inputName,
-        inputBrand: this.inputBrand,
-        inputDescription: this.inputDescription,
+      const alimento = {
+        nome: this.inputName,
+        marchio: this.inputBrand,
+        descrizione: this.inputDescription,
         inputImg: this.inputImg,
         inputKj: this.inputKj,
         inputKcal: this.inputKcal,
@@ -190,7 +190,7 @@ export default {
         inputSalt: this.inputSalt,
       };
 
-      axios.post('http://localhost:8080/Macros-app/alimenti', nourishment)
+      axios.post('http://localhost:8080/Macros-app/alimenti', alimento)
         .then(response => {
           
           console.log('Dati inviati con successo:', response.data);
