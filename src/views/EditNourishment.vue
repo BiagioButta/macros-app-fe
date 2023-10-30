@@ -119,6 +119,7 @@
   export default {
     data() {
       return {
+        getDataFromBE: useGetDataFromBE(),
         inputName: '',
         inputBrand: '',
         inputDescription: "",
@@ -141,7 +142,7 @@
     props: {
      id: {
         required: true,
-        type: Number
+        type: String
      }
     },
     computed: {
