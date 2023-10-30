@@ -12,6 +12,11 @@
          
           <p><strong>Nome:</strong> {{ nourishment.nome }}</p>
           <p><strong>Marchio:</strong> {{ nourishment.marchio }}</p>
+          <button>
+            <router-link :to="{ name: 'editNourishment', params: { id: nourishment.id } }">
+              <i class="fa-solid fa-pen" style="color: #000000;">Modifica alimento</i>
+            </router-link>
+          </button>
           <button @click="deleteNourishment(nourishment)">
             <i class="fa-solid fa-trash-can" style="color: #000000;">Elimina alimento</i>
           </button>

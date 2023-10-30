@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import Login from '../views/Login.vue'
 import AddNourishment from '../views/AddNourishment.vue'
 import NourishmentList from '../views/NourishmentList.vue'
+import EditNourishment from '../views/EditNourishment.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/nourishmentList',
       name: 'nourishmentList',
       component: NourishmentList
+    },
+    {
+      path: '/editNourishment:id',
+      name: 'editNourishment',
+      component: EditNourishment
     },
   ]
 })

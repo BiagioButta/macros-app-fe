@@ -6,7 +6,8 @@ export const useGetDataFromBE = defineStore('getDataFromBE', {
     historyEnable: true,
     state: () => {
         return {
-            nourishmentList: []
+            nourishmentList: [],
+            nourishment: []
         }
     },
     getters: {
@@ -18,6 +19,15 @@ export const useGetDataFromBE = defineStore('getDataFromBE', {
             const response = await axios.get("http://localhost:8080/Macros-app/alimenti")
             this.nourishmentList = response.data.list
             console.log('Dati ricevuti:', this.nourishmentList);
+        } catch (error) {
+            console.error(error)
+        }
+      },
+      async getNourishmentByID(){
+        try {
+            const response = await axios.get(`http://localhost:8080/Macros-app/alimenti/${id}`)
+            this.nourishment = response.data.list
+            console.log('Dati ricevuti:', this.nourishment);
         } catch (error) {
             console.error(error)
         }
