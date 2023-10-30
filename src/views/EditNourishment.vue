@@ -154,25 +154,28 @@
       async updateNourishment() {
         try {
           const updatedNourishment = {
-            nome: this.inputName,
-            marchio: this.inputBrand,
-            descrizione: this.inputDescription,
-            inputImg: this.inputImg,
-            inputKj: this.inputKj,
-            inputKcal: this.inputKcal,
-            inputCarbohydrates: this.inputCarbohydrates,
-            inputSugar: this.inputSugar,
-            inputFats: this.inputFats,
-            inputSatured: this.inputSatured,
-            inputProteins: this.inputProteins,
-            inputFibers: this.inputFibers,
-            inputSodium: this.inputSodium,
-            inputPotassium: this.inputPotassium,
-            inputIron: this.inputIron,
-            inputZinc: this.inputZinc,
-            inputSalt: this.inputSalt,
+            alimento: {
+                id: this.id,
+                nome: this.inputName,
+                marchio: this.inputBrand,
+                descrizione: this.inputDescription,
+                inputImg: this.inputImg,
+                inputKj: this.inputKj,
+                inputKcal: this.inputKcal,
+                inputCarbohydrates: this.inputCarbohydrates,
+                inputSugar: this.inputSugar,
+                inputFats: this.inputFats,
+                inputSatured: this.inputSatured,
+                inputProteins: this.inputProteins,
+                inputFibers: this.inputFibers,
+                inputSodium: this.inputSodium,
+                inputPotassium: this.inputPotassium,
+                inputIron: this.inputIron,
+                inputZinc: this.inputZinc,
+                inputSalt: this.inputSalt,
+            }
           };
-          await axios.put(`http://localhost:8080/Macros-app/alimenti/${this.id}`, updatedNourishment);
+          await axios.put("http://localhost:8080/Macros-app/alimenti", updatedNourishment);
   
         } catch (error) {
           console.error('Errore durante l\'aggiornamento:', error);
