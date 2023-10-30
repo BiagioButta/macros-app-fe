@@ -16,7 +16,7 @@ export const useGetDataFromBE = defineStore('getDataFromBE', {
       async getNourishment(){
         try {
             const response = await axios.get("http://localhost:8080/Macros-app/alimenti")
-            this.nourishmentList = response.data
+            this.nourishmentList = response.data.list
             console.log('Dati ricevuti:', this.nourishmentList);
         } catch (error) {
             console.error(error)
