@@ -19,7 +19,7 @@
     methods: {
       async fetchData() {
         try {
-          const response = await axios.get('http://localhost:8080/Macros_app/alimenti');
+          const response = await axios.get('http://localhost:8080/Macros-app/alimenti');
           const data = response.data;
           console.log('Dati ricevuti:', data);
 
