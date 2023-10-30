@@ -179,7 +179,7 @@
       }
     },
     mounted(){
-        this.getDataFromBE.getNourishment()
+        this.getDataFromBE.getNourishmentByID(this.id)
     }
   };
 </script>

@@ -31,7 +31,8 @@ const router = createRouter({
     {
       path: '/editNourishment:id',
       name: 'editNourishment',
-      component: EditNourishment
+      component: EditNourishment,
+      props: true
     },
   ]
 })
