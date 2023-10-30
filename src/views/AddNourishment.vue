@@ -1,9 +1,11 @@
 <template>
   <div class="container">
+ 
     <div class="row">
         <h1>Aggiungi un nuovo alimento</h1>
     </div>
-    <form>
+
+    <form @submit.prevent="addNourishment">
       <div class="row mb-3">
         <label for="inputName" class="col-sm-2 col-form-label">Nome alimento</label>
         <div class="col-sm-10">
@@ -88,8 +90,26 @@
           <input type="text" class="form-control" id="inputPotassium">
         </div>
       </div>
+      <div class="row mb-3">
+        <label for="inputIron" class="col-sm-2 col-form-label">Ferro</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputIron">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputZinc" class="col-sm-2 col-form-label">Zinco</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputZinc">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputSalt" class="col-sm-2 col-form-label">Sale</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="inputSalt">
+        </div>
+      </div>
 
-      <fieldset class="row mb-3">
+      <!-- <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0">Categoria</legend>
         <div class="col-sm-10">
           <div class="form-check">
@@ -117,9 +137,69 @@
             </label>
           </div>
         </div>
-      </fieldset>
+      </fieldset> -->
 
       <button type="submit" class="btn btn-primary">Salva alimento</button>
     </form>
   </div>
 </template>
+
+<script>
+import axios from 'axios';
+
+export default {
+  data() {
+    return {
+      inputName: '',
+      inputBrand: '',
+      inputDescription: "",
+      inputImg: "",
+      inputKj: "",
+      inputKcal: "",
+      inputCarbohydrates: "",
+      inputSugar:"",
+      inputFats: "",
+      inputProteins: "",
+      inputFibers: "",
+      inputSodium: "",
+      inputPotassium: "",
+      inputIron: "",
+      inputZinc: "",
+      inputSalt: ""
+    };
+  },
+  methods: {
+    addNourishment() {
+      
+      const nourishment = {
+        inputName: this.inputName,
+        inputBrand: this.inputBrand,
+        inputDescription: this.inputDescription,
+        inputImg: this.inputImg,
+        inputKj: this.inputKj,
+        inputKcal: this.inputKcal,
+        inputCarbohydrates: this.inputCarbohydrates,
+        inputSugar: this.inputSugar,
+        inputFats: this.inputFats,
+        inputProteins: this.inputProteins,
+        inputFibers: this.inputFibers,
+        inputSodium: this.inputSodium,
+        inputPotassium: this.inputPotassium,
+        inputIron: this.inputIron,
+        inputZinc: this.inputZinc,
+        inputSalt: this.inputSalt,
+      };
+
+      axios.post('http://localhost:8080/Macros-app/alimenti', nourishment)
+        .then(response => {
+          
+          console.log('Dati inviati con successo:', response.data);
+        })
+        .catch(error => {
+          
+          console.error("Errore nell'invio dei dati:", error);
+        });
+    }
+  },
+};
+</script>
