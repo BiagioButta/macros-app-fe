@@ -1,4 +1,7 @@
 <template>
+
+  <default-layout>
+
     <h1>Lista degli alimenti</h1>
 
     <button class="btn btn-primary"><i class="fa-solid fa-plus fa-2xl" style="color: #ffffff;"></i>
@@ -27,16 +30,19 @@
     <div v-else>
       <p>Nessun alimento disponibile.</p>
     </div>
+
+  </default-layout>
 </template>
 
 
 <script>
   import axios from 'axios'
+  import DefaultLayout from '../layouts/DefaultLayout.vue';
   import { useGetDataFromBE } from '../stores/getDataFromBE';
 
   export default {
     components: {
-      
+      DefaultLayout
     },
     data() {
         return {
