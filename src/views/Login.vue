@@ -1,35 +1,56 @@
 <template>
-    <div class="container">
-       
-        <div class="form login">
-            <div class="form-content">
-                <h1>Accedi</h1>
-                <form @submit.prevent="login">
-                    <div class="field input-field">
-                        <input type="text" placeholder="Username" class="input" v-model="username">
+        <div class="main-container">
+
+            <div class="form-container">
+
+                <div class="login-form">
+
+                    <form>
+                        <div class="field input-field">
+                            <input type="text" placeholder="Nome utente" class="input" v-model="username">
+                        </div>
+                        <div class="field input-field">
+                            <input type="password" placeholder="Password" class="password" v-model="password">
+                        </div>
+                        <div class="form-link">
+                            <a href="#" class="forgot-pass">Password dimenticata?</a>
+                        </div>
+                        <div class="field button-field">
+                            <button>Accedi</button>
+                        </div>
+                        <div class="form-remember-me">
+                            <input type="checkbox" id="remember-me">
+                            <label for="remember-me">Ricordami</label>
+                        </div>
+                    </form>
+                    
+
+                    <div class="line"></div>
+
+                    <div class="google-login">
+                        <div class="field google">
+                            <img src="../assets/img/Google__G__logo.svg.png" alt="" class="google-img">
+                            <button @click.prevent="">Accedi con Google</button>
+                        </div>
                     </div>
-                    <div class="field input-field">
-                        <input type="password" placeholder="Password" class="password" v-model="password">
+
+                    <div class="google-login">
+                        <div class="field google">
+                            <img src="../assets/img/2048px-Facebook_logo_36x36.svg.png" alt="" class="google-img">
+                            <button @click.prevent="">Accedi con Facebook</button>
+                        </div>
                     </div>
-                    <div class="form-link">
-                        <a href="#" class="forgot-pass">Password dimenticata?</a>
-                    </div>
-                    <div class="field button-field">
-                        <button>Accedi</button>
-                    </div>
-                </form>
-                <div class="form-link">
-                    <span>Non hai un account? <router-link to="/register" class="link signup-link">Registrati</router-link></span>
+
                 </div>
+                
+
+                <div class="">
+                    <!-- nel caso in cui si voglia mettere altro -->
+                </div>
+              
             </div>
+
         </div>
-
-        <div>
-            <router-link to="/">Ritorna alla Homepage</router-link>
-        </div>
-
-    </div>
-
 </template>
 
 <script>
@@ -59,147 +80,186 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container{
-    min-height: 100vh;
+
+.main-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 30px;
-}
-.form{
-    max-width: 430px;
-    width: 100%;
-    padding: 30px;
-    border-radius: 6px;
-    background: #FFF;
+    height: 100%;
+    background: url('../assets/img/flatlay-iron-skillet-with-meat-and-other-food.jpg') no-repeat center center fixed;
+    background-size: cover;
+    opacity: 0.7;
+    z-index: -1;
+  }
 }
 
-h1{
-    font-size: 28px;
-    font-weight: 600;
-    color: #232836;
-    text-align: center;
+.form-container {
+  position: relative;
+  background: url('../assets/img/flatlay-iron-skillet-with-meat-and-other-food.jpg') no-repeat right;
+  background-size: cover;
+  width: 50%;
+  height: 60vh;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    z-index: 1;
+  }
 }
-form{
-    margin-top: 30px;
-}
-.form .field{
+
+.login-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  form {
+    position: relative;
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+  }
+
+  .field {
     position: relative;
     height: 50px;
     width: 100%;
     margin-top: 20px;
     border-radius: 6px;
-}
-.field input,
-.field button{
-    height: 100%;
-    width: 100%;
-    border: none;
-    font-size: 16px;
-    font-weight: 400;
-    border-radius: 6px;
-}
-.field input{
-    outline: none;
-    padding: 0 15px;
-    border: 1px solid#CACACA;
-}
-.field input:focus{
-    border-bottom-width: 2px;
-}
-.eye-icon{
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #8b8b8b;
-    cursor: pointer;
-    padding: 5px;
-}
-.field button{
-    color: #fff;
-    background-color: #0171d3;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-.field button:hover{
-    background-color: #016dcb;
-}
-.form-link{
-    text-align: center;
+
+    input, button {
+      height: 100%;
+      width: 100%;
+      border: none;
+      font-size: 16px;
+      font-weight: 400;
+      border-radius: 6px;
+    }
+
+    input {
+      outline: none;
+      padding: 0 15px;
+      border: 1px solid#CACACA;
+
+      &:focus {
+        border-bottom-width: 2px;
+      }
+    }
+
+    button {
+      color: #fff;
+      background-color: #d13934;
+      transition: all 0.3s ease;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #cb1f01;
+      }
+    }
+  }
+
+  .form-link {
     margin-top: 10px;
-}
-.form-link span,
-.form-link a{
-    font-size: 14px;
-    font-weight: 400;
-    color: #232836;
-}
-.form a{
-    color: #0171d3;
-    text-decoration: none;
-}
-.form-content a:hover{
-    text-decoration: underline;
-}
-.line{
+
+    span, a {
+      font-size: 16px;
+      font-weight: 500;
+      color: #000000;
+    }
+  }
+
+  .form-remember-me {
+    display: flex;
+    margin-top: 10px;
+    align-items: center;
+
+    input {
+      width: 24px;
+      margin: 0;
+    }
+  }
+
+  .line {
     position: relative;
+    z-index: 2;
     height: 1px;
-    width: 100%;
+    width: 80%;
     margin: 36px 0;
-    background-color: #d4d4d4;
-}
-.line::before{
-    content: 'Oppure';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFF;
-    color: #8b8b8b;
-    padding: 0 15px;
-}
-.media-options a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-a.facebook{
+    background-color: #000000;
+
+    &::before {
+      content: 'Oppure';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #ffffff;
+      padding: 0 15px;
+    }
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px 20px;
+    background: #007bff;
     color: #fff;
-    background-color: #4267b2;
-}
-a.facebook .facebook-icon{
-    height: 28px;
-    width: 28px;
-    color: #0171d3;
-    font-size: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
-}
-.facebook-icon,
-img.google-img{
-    position: absolute;
-    top: 50%;
-    left: 15px;
-    transform: translateY(-50%);
-}
-img.google-img{
-    height: 20px;
-    width: 20px;
-    object-fit: cover;
-}
-a.google{
-    border: 1px solid #CACACA;
-}
-a.google span{
-    font-weight: 500;
-    opacity: 0.6;
-    color: #232836;
+    border: none;
+    cursor: pointer;
+  }
 }
 
+.google-login {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+
+  .google {
+    border: 1px solid #dddddd;
+
+    .google-img {
+      position: absolute;
+      top: 50%;
+      left: 15px;
+      transform: translateY(-50%);
+      height: 25px;
+      width: 25px;
+      object-fit: cover;
+    }
+  }
+}
 </style>

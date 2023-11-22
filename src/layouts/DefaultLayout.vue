@@ -4,14 +4,11 @@
         <Header/>
     </div>
 
-    <div class="container">
-        <div id="main">
-            <slot/>
-        </div>
-        
+    <div>
+        <slot/>
     </div>
     
-    <div class="row">
+    <div class="footer">
         <Footer/>
     </div>
   

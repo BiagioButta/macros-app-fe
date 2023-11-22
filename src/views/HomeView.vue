@@ -1,6 +1,8 @@
 <template>
 
   <default-layout>
+   
+      <Jumbo/>
     
   </default-layout>
 
@@ -8,10 +10,12 @@
 
 <script>
 import axios from 'axios'
+import Jumbo from '../components/Jumbo.vue'
 import DefaultLayout from '../layouts/DefaultLayout.vue';
 export default {
   components: {
-    DefaultLayout
+    DefaultLayout,
+    Jumbo
   },
   data() {
     return {

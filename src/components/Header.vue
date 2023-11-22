@@ -30,17 +30,12 @@
         </div>
 
     </div>
-
-    <div class="row">
-        <Jumbo/>
-    </div>
 </template>
 
 <script>
-import Jumbo from '../components/Jumbo.vue'
 export default {
   components: {
-   Jumbo
+   
   },
   data() {
     return {
