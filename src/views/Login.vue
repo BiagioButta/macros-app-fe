@@ -1,45 +1,101 @@
 <template>
         <div class="main-container">
 
+            <div class="app-name">
+              <img src="../assets/img/146fc5273914ee430ad0bd4f57b682a5.png" alt="">
+            </div>
+
             <div class="form-container">
 
-                <div class="login-form">
+                <div
+                v-if="isLogin" 
+                class="login-form"
+                >
 
-                    <form @submit.prevent="login">
-                        <div class="field input-field">
-                            <input type="text" placeholder="Nome utente" class="input" v-model="username">
-                        </div>
-                        <div class="field input-field">
-                            <input type="password" placeholder="Password" class="password" v-model="password">
-                        </div>
-                        <div class="form-link">
-                            <a href="#" class="forgot-pass">Password dimenticata?</a>
-                        </div>
-                        <div class="field button-field">
-                            <button>Accedi</button>
-                        </div>
-                        <div class="form-remember-me">
-                            <input type="checkbox" id="remember-me">
-                            <label for="remember-me">Ricordami</label>
-                        </div>
-                    </form>
-                    
+                  <form @submit.prevent="login">
+                      <div class="field input-field">
+                          <input type="text" placeholder="Nome utente" class="input" v-model="username">
+                      </div>
+                      <div class="field input-field">
+                          <input type="password" placeholder="Password" class="password" v-model="password">
+                      </div>
+                      <div class="form-link">
+                          <a href="#" class="forgot-pass">Password dimenticata?</a>
+                      </div>
+                      <div class="field button-field">
+                          <button>Accedi</button>
+                      </div>
+                      <div class="form-remember-me">
+                          <input type="checkbox" id="remember-me">
+                          <label for="remember-me">Ricordami</label>
+                      </div>
+                  </form>
+                  
+                  <div class="line">
+                    <div class="line-sx"></div>
+                    <p class="line-text">Oppure</p>
+                    <div class="line-dx"></div>
+                  </div>
+                  
+                  <div class="google-login">
+                      <div class="field google">
+                          <img src="../assets/img/Google__G__logo.svg.png" alt="" class="google-img">
+                          <button @click.prevent="">Accedi con Google</button>
+                      </div>
+                  </div>
 
-                    <div class="line"></div>
+                  <div class="google-login">
+                      <div class="field google">
+                          <img src="../assets/img/2048px-Facebook_logo_36x36.svg.png" alt="" class="google-img">
+                          <button @click.prevent="">Accedi con Facebook</button>
+                      </div>
+                  </div>
 
-                    <div class="google-login">
-                        <div class="field google">
-                            <img src="../assets/img/Google__G__logo.svg.png" alt="" class="google-img">
-                            <button @click.prevent="">Accedi con Google</button>
-                        </div>
+                </div>
+
+                <div
+                v-else 
+                class="register-form"
+                >
+
+                  <form @submit.prevent="signup">
+                    <div class="field input-field">
+                        <input type="text" placeholder="Nome utente" class="input" v-model="username">
                     </div>
-
-                    <div class="google-login">
-                        <div class="field google">
-                            <img src="../assets/img/2048px-Facebook_logo_36x36.svg.png" alt="" class="google-img">
-                            <button @click.prevent="">Accedi con Facebook</button>
-                        </div>
+                    <div class="field input-field">
+                        <input type="password" placeholder="Password" class="password" v-model="password">
                     </div>
+                    <div class="form-link">
+                        <a href="#" class="forgot-pass">Password dimenticata?</a>
+                    </div>
+                    <div class="field button-field">
+                        <button>Accedi</button>
+                    </div>
+                    <div class="form-remember-me">
+                        <input type="checkbox" id="remember-me">
+                        <label for="remember-me">Ricordami</label>
+                    </div>
+                  </form>
+
+                  <div class="line">
+                    <div class="line-sx"></div>
+                    <p class="line-text">Oppure</p>
+                    <div class="line-dx"></div>
+                  </div>
+
+                  <div class="google-login">
+                    <div class="field google">
+                        <img src="../assets/img/Google__G__logo.svg.png" alt="" class="google-img">
+                        <button @click.prevent="">Accedi con Google</button>
+                    </div>
+                  </div>
+
+                  <div class="google-login">
+                    <div class="field google">
+                        <img src="../assets/img/2048px-Facebook_logo_36x36.svg.png" alt="" class="google-img">
+                        <button @click.prevent="">Accedi con Facebook</button>
+                    </div>
+                  </div>
 
                 </div>
                 
@@ -55,12 +111,14 @@
 
 <script>
 import axios from 'axios'
+import router from '../router/index'
 
 export default {
     data() {
         return {
             username: "",
-            password: ""
+            password: "",
+            isLogin: true
         }
     },
     methods: {
@@ -70,8 +128,14 @@ export default {
                     username: this.username,
                     password: this.password
                 })
+                if(response){
+                  router.replace({name: 'home'})
+
+                  console.log('Login effettuato con successo!')
+                }
             } catch(error) {
                 console.error(error)
+                console.log('Errore durante il login', error)
             }
         }
     }
@@ -88,6 +152,7 @@ export default {
   margin: 0;
   font-family: Arial, sans-serif;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
@@ -103,14 +168,21 @@ export default {
     opacity: 0.7;
     z-index: -1;
   }
+
+  .app-name{
+    margin-top: -100px;
+    z-index: 2;
+  }
+
 }
 
 .form-container {
   position: relative;
   background: url('../assets/img/flatlay-iron-skillet-with-meat-and-other-food.jpg') no-repeat right;
   background-size: cover;
-  width: 50%;
-  height: 60vh;
+  width: 45%;
+  height: 70vh;
+  margin-top: -30px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: flex;
   align-items: center;
@@ -124,7 +196,7 @@ export default {
     left: 0;
     width: 50%;
     height: 100%;
-    background: rgba(255,255,255,0.7);
+    background: #ffffffe0;
     z-index: 1;
   }
 }
@@ -206,22 +278,32 @@ export default {
     }
   }
 
-  .line {
-    position: relative;
-    z-index: 2;
-    height: 1px;
+  .line{
+    display: flex;
+    align-items: center;
     width: 80%;
-    margin: 36px 0;
-    background-color: #000000;
+    z-index: 2;
 
-    &::before {
-      content: 'Oppure';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: #ffffff;
-      padding: 0 15px;
+    .line-sx{
+      position: relative;
+      z-index: 2;
+      height: 1px;
+      width: 50%;
+      margin: 36px 0;
+      background-color: #000000;
+    }
+
+    .line-text{
+      padding: 15px 10px 0 10px;
+    }
+
+    .line-dx{
+      position: relative;
+      z-index: 2;
+      height: 1px;
+      width: 50%;
+      margin: 36px 0;
+      background-color: #000000;
     }
   }
 
