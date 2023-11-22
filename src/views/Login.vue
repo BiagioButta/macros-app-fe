@@ -5,7 +5,7 @@
 
                 <div class="login-form">
 
-                    <form>
+                    <form @submit.prevent="login">
                         <div class="field input-field">
                             <input type="text" placeholder="Nome utente" class="input" v-model="username">
                         </div>
@@ -66,7 +66,7 @@ export default {
     methods: {
         async login(){
             try {
-                const response = await axios.post('url', {
+                const response = await axios.post('http://localhost:8080/LoginMacrosService/public/login', {
                     username: this.username,
                     password: this.password
                 })
