@@ -63,11 +63,11 @@ export default {
                 { name: 'Metodi di Pagamento', url: '/paymentMethods' },
                 { name: 'FAQ', url: '/faq' },
                 { name: 'Contattaci', url: '/contactUs' },
-                { name: 'Login', url: '/login' },
+                { name: 'Accedi', url: '/signIn' },
             ],
             myAccountLinks: [
-                { name: 'Accedi', url: '/login' },
-                { name: 'Registrati', url: '/signin' },
+                { name: 'Accedi', url: '/signIn' },
+                { name: 'Registrati', url: '/signUp' },
                 { name: 'Il mio Profilo', url: '/userProfile' }
             ]
         }

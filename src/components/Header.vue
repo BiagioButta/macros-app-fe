@@ -25,7 +25,7 @@
 
         <div class="col">
           <ul class="d-flex flex-row justify-content-end m-auto me-4">
-            <li><router-link to="/login">Accedi</router-link></li>
+            <li><router-link to="/signIn">Accedi</router-link></li>
           </ul>
         </div>
 

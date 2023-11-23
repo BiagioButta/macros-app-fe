@@ -7,10 +7,7 @@
 
             <div class="form-container">
 
-                <div
-                v-if="isLogin" 
-                class="login-form"
-                >
+                <div class="login-form">
 
                   <form @submit.prevent="login">
                       <div class="field input-field">
@@ -20,7 +17,7 @@
                           <input type="password" placeholder="Password" class="password" v-model="password">
                       </div>
                       <div class="form-link">
-                          <a href="#" class="forgot-pass">Password dimenticata?</a>
+                          <router-link to="/resetPassword">Password dimenticata?</router-link>
                       </div>
                       <div class="field button-field">
                           <button>Accedi</button>
@@ -29,6 +26,9 @@
                           <input type="checkbox" id="remember-me">
                           <label for="remember-me">Ricordami</label>
                       </div>
+                      <div class="form-link">
+                          <router-link to="/signup">Non hai un account? Registrati subito!</router-link>
+                      </div>
                   </form>
                   
                   <div class="line">
@@ -36,15 +36,14 @@
                     <p class="line-text">Oppure</p>
                     <div class="line-dx"></div>
                   </div>
-                  
-                  <div class="google-login">
+                 
+                  <div class="other-login">
+
                       <div class="field google">
                           <img src="../assets/img/Google__G__logo.svg.png" alt="" class="google-img">
                           <button @click.prevent="">Accedi con Google</button>
                       </div>
-                  </div>
 
-                  <div class="google-login">
                       <div class="field google">
                           <img src="../assets/img/2048px-Facebook_logo_36x36.svg.png" alt="" class="google-img">
                           <button @click.prevent="">Accedi con Facebook</button>
@@ -52,53 +51,6 @@
                   </div>
 
                 </div>
-
-                <div
-                v-else 
-                class="register-form"
-                >
-
-                  <form @submit.prevent="signup">
-                    <div class="field input-field">
-                        <input type="text" placeholder="Nome utente" class="input" v-model="username">
-                    </div>
-                    <div class="field input-field">
-                        <input type="password" placeholder="Password" class="password" v-model="password">
-                    </div>
-                    <div class="form-link">
-                        <a href="#" class="forgot-pass">Password dimenticata?</a>
-                    </div>
-                    <div class="field button-field">
-                        <button>Accedi</button>
-                    </div>
-                    <div class="form-remember-me">
-                        <input type="checkbox" id="remember-me">
-                        <label for="remember-me">Ricordami</label>
-                    </div>
-                  </form>
-
-                  <div class="line">
-                    <div class="line-sx"></div>
-                    <p class="line-text">Oppure</p>
-                    <div class="line-dx"></div>
-                  </div>
-
-                  <div class="google-login">
-                    <div class="field google">
-                        <img src="../assets/img/Google__G__logo.svg.png" alt="" class="google-img">
-                        <button @click.prevent="">Accedi con Google</button>
-                    </div>
-                  </div>
-
-                  <div class="google-login">
-                    <div class="field google">
-                        <img src="../assets/img/2048px-Facebook_logo_36x36.svg.png" alt="" class="google-img">
-                        <button @click.prevent="">Accedi con Facebook</button>
-                    </div>
-                  </div>
-
-                </div>
-                
 
                 <div class="">
                     <!-- nel caso in cui si voglia mettere altro -->
@@ -118,7 +70,6 @@ export default {
         return {
             username: "",
             password: "",
-            isLogin: true
         }
     },
     methods: {
@@ -323,12 +274,14 @@ export default {
   }
 }
 
-.google-login {
+.other-login {
   width: 80%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   z-index: 2;
+  padding: 0 20px 25px 20px;
 
   .google {
     border: 1px solid #dddddd;

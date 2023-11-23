@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import Login from '../views/Login.vue'
+import SignIn from '../views/SignIn.vue'
+import SignUp from '../views/SignUp.vue'
 import AddNourishment from '../views/AddNourishment.vue'
 import NourishmentList from '../views/NourishmentList.vue'
 import EditNourishment from '../views/EditNourishment.vue'
@@ -16,9 +17,14 @@ const router = createRouter({
       component: HomeView
     },
     {
-      path: '/login',
-      name: 'login',
-      component: Login
+      path: '/signIn',
+      name: 'signIn',
+      component: SignIn
+    },
+    {
+      path: '/signUp',
+      name: 'signUp',
+      component: SignUp
     },
     {
       path: '/addNourishment',
